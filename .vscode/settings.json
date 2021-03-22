@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\Ishrak\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe"
+    "python.pythonPath": "C:\\Users\\Ishrak\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe",
+    "python.formatting.provider": "yapf"
 }
