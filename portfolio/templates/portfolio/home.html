@@ -1,43 +1,64 @@
 {% extends 'portfolio/base.html' %} {% block content %}
 <!-- <h1> Ishrak's Portfolio </h1> !-->
 
-{% load static %}
-
+{% load static %} <link rel="stylesheet" href="{% static "portfolio/custom.css"
+%}">
 <!-- <a href = "{% url 'blog:all_blogs' %}">Blogs</a> !-->
 <!-- <a href = "{% static 'portfolio/slip.pdf' %}" > Resume </a> !-->
-<div class="row justify-content-center my-3 text-center">
-  <div class="col-5">
-    <img
-      src="{% static 'portfolio/imagewall.jpg' %}"
-      class="img-fluid"
-      width="400"
-      height="350"
-    />
-    <h2>T.M. Ishrak Hussain</h2>
-  </div>
-</div>
-<br />
 
-<hr />
+<body>
+  <div class="fixed-bg bg-1">
+    <div class="row no-gutters">
+      <div class="col-auto text-center">
+        <div class="padding-image">
+          <img
+            src="{% static 'portfolio/fb2.jpeg' %}"
+            width="350px"
+            height="450px"
+            class="rounded float-center"
+          />
+        </div>
+        <div class="col main-font">
+          <h2>T.M. Ishrak Hussain</h2>
 
-<div class="row">
-  {% for project in projects %}
-  <div class="col-lg-4 col-md-6">
-    <div class="card" style="width: 18rem">
-      <img
-        class="img-fluid img-thumbnail rounded"
-        style="height: 200px; width: 100%"
-        src="{{ project.image.url }}"
-        alt="Card image cap"
-      />
-      <div class="card-body">
-        <h5 class="card-title">{{project.title}}</h5>
-        <p class="card-text">{{ project.description|safe}}</p>
-        <a href="{{ project.url}}" class="btn btn-warning" target="blank"
-          >See Project</a
-        >
+          <p class="sub-text text-center">
+            Computer Science and Engineering student at North South University
+          </p>
+        </div>
       </div>
     </div>
   </div>
-  {% endfor %} {% endblock %}
-</div>
+
+  <div class="fixed-bg bg-2">
+    <div class="row">
+      <br />
+      <br />
+      <br />
+      <br />
+      {% for project in projects %}
+      <div class="col-lg-4 col-md-6 padding">
+        <div class="card" style="width: 18rem">
+          <img
+            class="img-fluid img-thumbnail rounded"
+            style="height: 200px; width: 100%"
+            src="{{ project.image.url }}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{project.title}}</h5>
+            <p class="card-text">
+              {{ project.description|striptags|truncatechars:50}}
+            </p>
+            <a href="{{ project.url}}" class="btn btn-warning" target="blank"
+              >See Project</a
+            >
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+
+      {% endfor %} {% endblock %}
+    </div>
+  </div>
+</body>

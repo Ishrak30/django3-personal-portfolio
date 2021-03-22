@@ -1,25 +1,31 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 {% extends 'portfolio/base.html' %}
+<link rel="stylesheet" href="{% static "portfolio/custom.css"
+%}">
+
+
 {% block content %}
+<br>
 
 <head>
   <title>Blogs</title>
   <meta charset="utf-8">
  
   </head>
-<body>
+  
+<body class="fixed-bg bg-4">
 
 <div class="container">
   <div class="jumbotron">
-  <div class = "container p-3 my-3 bg-success text-white">
+  <div class = "container p-3 my-3 bg-4 text-white">
   <br>
-    <h1 class = "text-center">Blogs</h1>
+    <h1 class = "text-center sub-text">Blogs</h1>
     <br>
-    <p class = "text-center">Read my blogs here...</p> 
+    <h6 class = "text-center">Read my blogs here...</h6> 
   
   </div>
   </div>
-
+<br>
 <h5 class = "text-center"> Ishrak has written {{ blogs.count }} blog{{ blogs.count|pluralize }} </h5>
 
 <hr>
@@ -27,13 +33,13 @@
 
 {% for blog in blogs %}
   
-   <div class = "text-info"> 
-     <a href = '{% url 'blog:detail' blog.id %}' target="blank"> <h2>{{ blog.title }}</h2></a>
+   <div class = "main-font"> 
+     <a href = '{% url 'blog:detail' blog.id %}' target="blank"> <h3>{{ blog.title }}</h3></a>
       </div>
       <h5 class> {{ blog.date|date:'d M Y' }}  </h5>
-      <div class = "text-dark">
-      <p >{{ blog.description|striptags|truncatechars:100 }}</p>
-     </div> 
+      
+      <p >{{ blog.description|striptags|truncatechars:200 }}</p>
+     
      {% endfor %}
 </div>
 
